@@ -11,3 +11,4 @@
 - Setting Options
 
 
+Based upon Laravel Bootstrap Auth Structure. 
