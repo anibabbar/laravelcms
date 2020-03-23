@@ -1,8 +1,8 @@
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-#A Laravel Project to Create a Website.
+# A Laravel Project to Create a Website.
 
-##Features
+## Features
 
 - Page CRUD
 - Post CRUD
