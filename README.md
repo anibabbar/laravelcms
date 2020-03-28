@@ -11,4 +11,22 @@
 - Setting Options
 
 
+### SEO Features
+
+- Meta Fields for all Content Types
+
 Based upon Laravel Bootstrap Auth Structure. 
+
+## Database
+
+- MySql
+
+### Libraries used
+
+- Bootstrap
+- Ckeditor
+- Select2
+- LazyLoad
+- DataTables
+
+

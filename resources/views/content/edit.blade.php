@@ -78,13 +78,16 @@
                                     <label for="Title">Category </label>
                                     <select name="category[]" id="" class="select2 form-control" multiple="multiple">
                                         <option value="">NA </option>
+
                                         @foreach($category as $cat)
                                             <option value="{{$cat->id}}"
+                                                    @if(is_array($content->category) && !empty($content->category))
                                                 @foreach($content->category as $selcat)
                                                         @if($cat->id == $selcat)
                                                             selected="selected"
     @endif
                                                     @endforeach
+                                                @endif
                                             >
                                                 {{$cat->title}}
                                             </option>
@@ -98,11 +101,14 @@
                                         <option value="">NA</option>
                                         @foreach($tag as $t)
                                             <option value="{{$t->id}}"
+                                                    @if(is_array($content->tags) && !empty($content->tags))
+
                                                     @foreach($content->tags as $seltag)
                                                     @if($t->id == $seltag)
                                                     selected="selected"
                                                     @endif
                                                 @endforeach
+                                                @endif
                                             > {{$t->title}}</option>
                                         @endforeach
                                     </select>

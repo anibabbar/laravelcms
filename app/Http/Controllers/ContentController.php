@@ -23,7 +23,10 @@ class ContentController extends Controller
     public function index()
     {
         $post_type = $_GET['post_type'];
+
         $content = DB::table('content')->where('post_type', '=', $post_type)->get();
+
+//        $content = $this->Content->contents();
 
         return view('content.listcontent', [
             'content' => $content,
@@ -48,7 +51,7 @@ class ContentController extends Controller
         //return $content;
 
         //return view('content.create');
-         $post_type = $_GET['post_type'];
+        $post_type = $_GET['post_type'];
 
         return view('content.create', [
             'category' => $category,
@@ -69,23 +72,27 @@ class ContentController extends Controller
         //
         //dump($request);
 
+
         $content = new Content;
 
-//        $content->title = $request->title;
-//        $content->description = $request->description;
-//        $content->excerpts = $request->excerpts;
-//        $content->meta_title = $request->meta_title;
-//        $content->meta_description = $request->meta_description;
-//
-//        $content->save();
+        $content->title = $request->title;
+        $content->description = $request->description;
+        $content->excerpts = $request->excerpts;
+        $content->meta_title = $request->meta_title;
+        $content->meta_description = $request->meta_description;
+        $content->meta_description = $request->meta_description;
+        $content->user_id = auth()->id();
+        $content->post_type = $request->post_type;
 
-        Content::create($request->except('_token'));
+        $content->save();
 
-            $post_type = $request->post_type;
+        // Content::create($request->except('_token'));
 
-            $redirect_url = '/Content?post_type=' . $post_type;
+        $post_type = $request->post_type;
+
+        $redirect_url = '/Content?post_type=' . $post_type;
      //   return ("Data Updated");
-    return redirect($redirect_url);
+        return redirect($redirect_url);
 
     }
 
@@ -95,9 +102,12 @@ class ContentController extends Controller
      * @param  \App\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function show(Content $content)
+    public function show($content)
     {
-        //
+        return view('content.show', [
+            'content' => Content::where('slug', $content)->firstOrFail()
+        ]);
+
     }
 
     /**
@@ -108,8 +118,12 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
+
         $post_type = $_GET['post_type'];
         $content = Content::where('id', $id)->firstOrFail();
+
+        $this->authorize('view', $content );
+
         $category = DB::table('content')->where('post_type', '=', 'category')->get();
         $tag = DB::table('content')->where('post_type', '=', 'tags')->get();
         $page = DB::table('content')->where('post_type', '=', 'page')->get();
@@ -135,9 +149,13 @@ class ContentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-      /* public function update(Request $request, Content $content) */
+    /* public function update(Request $request, Content $content) */
     {
+
+
         $content =  Content::find($id);
+
+        $this->authorize('view', $content );
 
         $input = $request->all();
 

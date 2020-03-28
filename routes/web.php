@@ -49,3 +49,6 @@ Route::delete('Content/{id}/destroy', 'ContentController@destroy');
 
 //Route::get('Content/cat', 'ContentController@cat');
 Route::get('/Content/cat', 'ContentController@cat')->name('cat');
+
+Route::get('Settings', 'Settingscontroller@index');
+Route::put('Settings', 'Settingscontroller@store');

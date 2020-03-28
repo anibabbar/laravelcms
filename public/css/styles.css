@@ -1,0 +1,27 @@
+/*
+Body
+*/
+body {background-color:#ffffff;}
+
+/* Navbar css */
+
+
+/* Content */
+.content_title {}
+.content_description {}
+
+/* Page */
+.content_wrapper_page {}
+.inner_wrapper_page {}
+
+/* Post */
+.content_wrapper_post {}
+.inner_wrapper_post {}
+
+/* Category */
+.content_wrapper_category {}
+.inner_wrapper_category {}
+
+/* Tags */
+.content_wrapper_tags {}
+.inner_wrapper_tags {}

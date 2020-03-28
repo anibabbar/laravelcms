@@ -38,7 +38,11 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+
+        // disabled registerations. only administrator can create new users.
+
+    //$this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**

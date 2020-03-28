@@ -7,13 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} </title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- Ckeditor -->
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <!-- Scripts -->
-{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
+    {{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
     <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
@@ -25,6 +25,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        body {background-color:#f2f4f7;}
+    </style>
 </head>
 <body>
     <div id="app">
@@ -57,7 +60,7 @@
                         @endif
                         @else
                         {{--                            <li class="nav-item"><a href="/Content" class="nav-link">Page</a></li>--}}
-                        <li class="nav-item"><a href="/home" class="nav-link">Dashboard</a></li>
+                        <li class="nav-item"><span class="nav-link"><a href="/home" class="btn btn-sm btn-dark">Dashboard</a>&nbsp; &nbsp;</span></li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
